@@ -37,6 +37,7 @@ line-height: 100px;
   color: darkblue;
   will-change: filter;
   transition: filter 300ms;
+  text-decoration: none;
 }
 
 .logo {
@@ -62,6 +63,7 @@ line-height: 100px;
   color: white;
   will-change: filter;
   transition: filter 300ms;
+  text-decoration: none;
 
 }
 .NavLink:hover {
@@ -117,4 +119,10 @@ line-height: 100px;
   font-weight: bold;
   font-size:25px;
   color: red;
+}
+.comment{
+  border-style: solid;
+  border-color:black;
+  border-radius: 30px;
+  margin-bottom: 10px;
 }

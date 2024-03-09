@@ -14,3 +14,15 @@ export const getArticleById = async (article_id)=>{
     return response.data.article
      
  }
+ export const getCommentsByArticleId = async(article_id)=>{
+    const response = await newsApi.get(`/articles/${article_id}/comments`)
+    return response.data.comments
+ }
+ export const incrementCommentVoteCount=async(comment_id,vote)=>{
+    const response = await newsApi.patch(`/comments/${comment_id}`,{inc_votes:vote})
+    return response.data.comment
+ }
+ export const PostComment=async(article_id,newComment)=>{
+    const response = await newsApi.post(`/articles/${article_id}/comments`,newComment)
+    return response.data.comment
+ }
