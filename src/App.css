@@ -1,0 +1,86 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.header{
+  font-family:  system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.flex-container {
+  display: flex;
+  background-color:red;
+
+  
+  /* justify-content: space-between; */
+}
+.active-icon{
+  border-color: blue;
+}
+.active{
+  position:relative;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin: 10px;
+
+  font-size: 30px;
+  text-align: center;
+vertical-align: middle;
+line-height: 100px;  
+  color: darkblue;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo {
+  
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.NavLink{
+  position:relative;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin: 10px;
+
+  font-size: 30px;
+  text-align: center;
+vertical-align: middle;
+line-height: 100px;  
+  color: white;
+  will-change: filter;
+  transition: filter 300ms;
+
+}
+.NavLink:hover {
+
+ text-shadow:  0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+
