@@ -10,7 +10,8 @@ function Articles() {
             setArticles(articles)
         })
 
-    })
+    },[])
+    
     return(<>
     <h1>Our Latest Articles</h1>
     <Grid className = 'article-container' container rowSpacing={2}>
