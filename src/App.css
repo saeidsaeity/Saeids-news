@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -16,6 +16,7 @@
 .flex-container {
   display: flex;
   background-color:red;
+  width:100vw;
 
   
   /* justify-content: space-between; */
@@ -40,7 +41,7 @@ line-height: 100px;
 
 .logo {
   
-  height: 6em;
+  height: 50px;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
@@ -53,7 +54,7 @@ line-height: 100px;
   padding-left: 100px;
   padding-right: 100px;
   margin: 10px;
-
+  
   font-size: 30px;
   text-align: center;
 vertical-align: middle;
@@ -82,5 +83,38 @@ line-height: 100px;
     animation: logo-spin infinite 20s linear;
   }
 }
+.article{
+  /* border: 1px solid black; */
+  margin:auto;
+}
+.article-container{
+  border: 1px solid black;
+ 
+  
 
+}
 
+.author{
+  position: relative;
+  font-weight: bold;
+  font-size: 20px;
+}
+.article-image-container{
+  position: relative;
+
+}
+.article-image{
+  width:600px;
+  height:500px;
+}
+.title{
+  position: relative;
+  font-weight: bold;
+  font-size:30px;
+}
+.topic{
+  position: relative;
+  font-weight: bold;
+  font-size:25px;
+  color: red;
+}
