@@ -5,7 +5,7 @@ const CommentAdder = ({setComments,article_id})=>{
     const[newComment,setNewComment]=useState({username:'',body:''})
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(newComment);
+       
 
     if (validateForm()) {
         PostComment(article_id,newComment).then((response)=>{
