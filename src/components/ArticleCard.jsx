@@ -1,11 +1,11 @@
 import { useEffect,useState} from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getArticleById } from "./utils/api";
 import Comments from "./Comments";
 import {ArrowUpOutlined,ArrowDownOutlined } from '@ant-design/icons'
 import CommentAdder from "./CommentAdder";
 
-function Article() {
+function ArticleCard() {
     const {article_id}= useParams()
     const [article,setArticle]=useState([])
     const[comments,setComments]=useState([])
@@ -17,7 +17,7 @@ function Article() {
     },[])
    return(<>
     <h1>{article.title}</h1>
-    <h2>Topic: {article.topic} Author:{article.author}</h2>
+    <h2>Topic:<Link to={`/articles?topic=${article.topic}`}>{article.topic}</Link>Author:{article.author}</h2>
     <h3>{article.created_at?.slice(0,10)} Votes: {article.votes}<ArrowUpOutlined/><ArrowDownOutlined /></h3>
     <p>{article.body}</p>
     <img src = {article.article_img_url}/>
@@ -28,4 +28,4 @@ function Article() {
    
    </>)
 }
-export default Article
+export default ArticleCard
