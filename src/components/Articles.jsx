@@ -8,26 +8,49 @@ function Articles() {
     const [articles,setArticles]=useState([])
     const [searchParams,setSearchParams]=useSearchParams()
     const topic = searchParams.get('topic')
+    const sort_by=searchParams.get('sort_by')
     useEffect(()=>{
-        getArticles(topic).then((articles)=>{
+        getArticles(topic,sort_by).then((articles)=>{
             setArticles(articles)
         })
 
-    },[topic])
-    
+    },[topic,sort_by])
+    function handleChange(event) {
+       setSearchParams({sort_by : event.target.value})
+    }
     
     return(<>
     <h1>Our Latest Articles</h1>
-    <Topics styling = 'small'></Topics>
+    
+   
+    
     <Grid className = 'article-container' container alignItems="stretch"  rowSpacing={2}>
+       <Grid  xs={1} sm={1} md={1} lg={1} xl={1}>
+       <Topics styling = 'small'></Topics>
+     
+        <div className ='select-box'>
+    <label>
+      Sort By:<select name="selectedQuery" onChange={handleChange}>
+        <option value="created_at">Date</option>
+        <option value="title">title</option>
+        <option value="author">author</option>
+        <option value="votes">votes</option>
+      </select>
+    </label>
+    </div></Grid>
+    <Grid className = 'article' xs={11} sm={11} md={11} lg={7} xl={5} sx={{minWidth: '1200px'}}>
         {articles.map((art)=> {
             return(
-            <Grid className = 'article' xs={12} sm={12} md={8} lg={8} xl={6} sx={{minWidth: '600px'}} key={art.article_id}><div className ="title">{art.title}</div><Link to={`/articles?topic=${art.topic}`}><div className ='topic'>{art.topic}</div></Link> <div className='author'>{art.author}</div> 
+                <>
+           <div className ="title">{art.title}</div><Link to={`/articles?topic=${art.topic}`}><div className ='topic'>{art.topic}</div></Link> <div className='author'>{art.author}</div> 
             <div className="article-image-container">
                 <Link to={`/articles/${art.article_id}`}><img className='article-image' src={art.article_img_url}/></Link>
                 </div>
                 <div className = 'date'>{art.created_at.slice(0,10)} Votes: {art.votes}</div>
-            </Grid>)})}
+          
+            </>
+            )})}
+              </Grid>
         </Grid>
     </>)
 }
