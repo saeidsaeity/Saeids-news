@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { PostComment } from "./utils/api";
+import { postComment } from "./utils/api";
 
 const CommentAdder = ({setComments,article_id})=>{
     const[newComment,setNewComment]=useState({username:'',body:''})
@@ -8,7 +8,7 @@ const CommentAdder = ({setComments,article_id})=>{
        
 
     if (validateForm()) {
-        PostComment(article_id,newComment).then((response)=>{
+        postComment(article_id,newComment).then((response)=>{
             setNewComment({username:'',body:''})
             setComments((currItems)=> {
                  return [response, ...currItems]
