@@ -25,7 +25,7 @@ function Articles() {
    
     
     <Grid className = 'article-container' container alignItems="stretch"  rowSpacing={2}>
-       <Grid  className='left-sidebar' xs={1} sm={1} md={1} lg={1} xl={1}>
+       <Grid  className='left-sidebar' xs={12} sm={12} md={12} lg={12} xl={1}>
        <Topics styling = 'small'></Topics>
      
         <div className ='select-box'>
@@ -38,7 +38,7 @@ function Articles() {
       </select>
     </label>
     </div></Grid>
-    <Grid className = 'article' xs={11} sm={11} md={11} lg={7} xl={5} sx={{minWidth: '1200px'}}>
+    <Grid className = 'article' xs={12} sm={12} md={12} lg={12} xl={11} sx={{minWidth: '1200px'}}>
         {articles.map((art)=> {
             return(
                 <div key ={art.article_id}>

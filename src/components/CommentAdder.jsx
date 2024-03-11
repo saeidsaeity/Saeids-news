@@ -1,8 +1,11 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import { postComment } from "./utils/api";
+import { UserContext } from "./contexts/UserContext";
 
 const CommentAdder = ({setComments,article_id})=>{
-    const[newComment,setNewComment]=useState({username:'',body:''})
+    const {user,setUser} = useContext(UserContext)
+    const[newComment,setNewComment]=useState({username:user,body:''})
+    const [error,setError]=useState()
     const handleSubmit = (event) => {
         event.preventDefault()
        
@@ -21,6 +24,7 @@ const CommentAdder = ({setComments,article_id})=>{
         const errors ={}
         !newComment.username? errors.username="username is required":null
         !newComment.body? errors.body="comment is required":null
+        setError({username:errors.username,body:errors.body})
         setNewComment((prevState) => ({ ...prevState, errors }));
         return Object.keys(errors).length === 0
     }
@@ -32,14 +36,15 @@ const CommentAdder = ({setComments,article_id})=>{
     }
     
     return(
+        <>
 <form onSubmit={handleSubmit}>
-<label htmlFor = "username">Username</label>
-<input type="text" id="username" name="username" value={newComment.username} onChange={handleChange}/>
 <label htmlFor = "body">Body</label>
 <textarea id="body"  name="body" value={newComment.body} onChange={handleChange}/>
 <button type='submit'>submit comment</button>
 </form>
-
+{error?.username? <p>Please login</p>:null}
+{error?.body? <p>Please Insert Comment into textbox</p>:null}
+</>
     )
 
 }
