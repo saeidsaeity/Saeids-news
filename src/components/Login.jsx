@@ -19,7 +19,7 @@ function Login() {
         
         if(allUsers.some((testuser)=> testuser.username === userInput)){
             setUser(userInput)
-            console.log(user);
+            localStorage.setItem('user',JSON.stringify(userInput))
         }
         setUserInput('')
         
