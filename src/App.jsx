@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Articles from './components/Articles'
 import Topics from './components/Topics'
 import ArticleCard from './components/ArticleCard'
+import Login from './components/Login'
 
 function App() {
  
@@ -19,6 +20,7 @@ function App() {
     <Route path='/articles' element = {<Articles/>}/>
     <Route path ='/topics' element ={<Topics/>}/>
     <Route path ='/articles/:article_id' element ={<ArticleCard/>}/>
+    <Route path ='/login' element ={<Login/>}/>
     </Routes>
     </>
   )

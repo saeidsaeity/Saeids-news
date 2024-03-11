@@ -31,3 +31,7 @@ export const getArticleById = async (article_id)=>{
    const response = await newsApi.get(`/topics`)
    return response.data.topics
  }
+ export const incrementArticleVoteCount=async(article_id,vote)=>{
+   const response = await newsApi.patch(`/Articles/${article_id}`,{inc_votes:vote})
+   return response.data.article
+}
