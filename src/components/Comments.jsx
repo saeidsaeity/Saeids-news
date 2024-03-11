@@ -9,8 +9,9 @@ function Comments({article_id,setComments,comments}) {
         setComments(comments)
         })
 
-    },[updateComment])
-    return(<>{comments.map((comment)=>{return <CommentCard key={comment.comment_id}comment={comment} updateComment={updateComment} setUpdateComment={setUpdateComment}/>})}</>)
+    },[])
+    
+    return(<>{comments.map((comment)=>{return <CommentCard key={comment.comment_id}comment={comment} setComments={setComments}/>})}</>)
     
 }
 export default Comments

@@ -1,8 +1,16 @@
 import {ArrowUpOutlined,ArrowDownOutlined } from '@ant-design/icons'
 import { incrementCommentVoteCount } from './utils/api'
-function CommentCard({comment,setUpdateComment,updateComment}) {
+import { useState } from 'react'
+function CommentCard({comment,setComments}) {
+    
     function changeVotes({comment_id},vote) {
-        incrementCommentVoteCount(comment_id,vote).then((comment)=>{setUpdateComment(updateComment+1)})
+        setComments((currComments)=>{
+            currComments.forEach((comment)=>{if(comment.comment_id === comment_id){
+                comment.votes=comment.votes + vote
+            }})
+            return [...currComments]
+        })
+        incrementCommentVoteCount(comment_id,vote)
         
     }
     return(<div className = "comment">
