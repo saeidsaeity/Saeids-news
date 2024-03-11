@@ -142,17 +142,9 @@ line-height: 100px;
 }
 
 .left-sidebar{
-  grid-area: left-sidebar;
-  background-color: green; 
+  border: 1px solid black;
 }
-.parent { 
-  display: grid;
-    grid-template-columns: 4.5rem 1fr 4.5rem;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: "left-sidebar main right-sidebar"
-                          "left-sidebar main right-sidebar";
-    height: 100vh;
-}  
+
 .right-sidebar{
   grid-area: right-sidebar;
 }

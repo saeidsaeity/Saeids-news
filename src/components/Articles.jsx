@@ -25,7 +25,7 @@ function Articles() {
    
     
     <Grid className = 'article-container' container alignItems="stretch"  rowSpacing={2}>
-       <Grid  xs={1} sm={1} md={1} lg={1} xl={1}>
+       <Grid  className='left-sidebar' xs={1} sm={1} md={1} lg={1} xl={1}>
        <Topics styling = 'small'></Topics>
      
         <div className ='select-box'>
@@ -41,14 +41,14 @@ function Articles() {
     <Grid className = 'article' xs={11} sm={11} md={11} lg={7} xl={5} sx={{minWidth: '1200px'}}>
         {articles.map((art)=> {
             return(
-                <>
+                <div key ={art.article_id}>
            <div className ="title">{art.title}</div><Link to={`/articles?topic=${art.topic}`}><div className ='topic'>{art.topic}</div></Link> <div className='author'>{art.author}</div> 
             <div className="article-image-container">
                 <Link to={`/articles/${art.article_id}`}><img className='article-image' src={art.article_img_url}/></Link>
                 </div>
                 <div className = 'date'>{art.created_at.slice(0,10)} Votes: {art.votes}</div>
           
-            </>
+            </div>
             )})}
               </Grid>
         </Grid>
