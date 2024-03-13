@@ -15,8 +15,8 @@ function Topics({styling}) {
     },[])
 
    
-    return(<div className={`topic-${styling}`}><h1>Topics</h1>
-    {topics.map((topic)=>{return <TopicCard  key={topic.slug} topic={topic}/>})}
+    return(<div className={`topic-${styling}`}><h1 className="disappear">Topics</h1>
+    {topics.map((topic)=>{return <TopicCard   key={topic.slug} topic={topic}/>})}
     </div>)
 
     

@@ -8,7 +8,7 @@ function Login() {
     const [userInput,setUserInput]=useState('')
     useEffect(()=>{
         getUsers().then((users)=>{
-            console.log(users);
+        
             setAllUsers(users)
 
         })
