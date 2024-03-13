@@ -11,11 +11,12 @@ function ArticleCard() {
     const[comments,setComments]=useState([])
     const [clicked,setClicked]=useState(0)
     const [error,setError]=useState()
+    const [articleError,setArticleError]= useState()
     useEffect(()=>{
         getArticleById(article_id).then((article)=>{
             setArticle(article)
         }
-        )
+        ).catch((error)=>{setArticleError(error.response)})
     },[])
    
     function changeVotes({article_id},vote) {
@@ -25,10 +26,16 @@ function ArticleCard() {
                 return{...currArticle,votes:article.votes + 1}
             })    
         incrementArticleVoteCount(article_id,vote)
-}
-else{
-    setError('already voted')
-}
+        }
+        else{
+            setError('already voted')
+        }
+            }
+    if(articleError){
+        return(
+        <h1>Error {articleError.status} : {articleError.data.msg}</h1>
+        
+        )
     }
 
    return(<>

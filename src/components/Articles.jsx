@@ -11,11 +11,13 @@ function Articles() {
     const topic = searchParams.get('topic')
     const sort_by=searchParams.get('sort_by')
     const order = searchParams.get('order')
+    const[error,setError]=useState()
     useEffect(()=>{
         getArticles(topic,sort_by,order).then((articles)=>{
 
             setArticles(articles)
-        })
+           
+        }).catch((error)=>{setError(error.response.data)})
 
     },[topic,sort_by,order])
     function handleChange(event) {
@@ -25,26 +27,66 @@ function Articles() {
          setSearchParams({sort_by : currSort, order:event.value})
         }
         else{
-       setSearchParams({sort_by : event.value})
+            const currOrder = searchParams.get('order')
+    setSearchParams({sort_by : event.value, order: currOrder!==null?currOrder:'desc'})
         }
 
     }
-    const options = [{value: "created_at", label: 'Date'},{value: 'title', label: 'title'},{value: 'author', label: 'author'},{value: 'votes', label: 'votes'}]
+    if(error){
+        return(<h2>Error {error.status}: {error.msg}</h2>)
+        
+    }
+    const options = [{value: "created_at", label: 'Date'},{value: 'title', label: 'Title'},{value: 'author', label: 'Author'},{value: 'votes', label: 'Votes'}]
     const optionsorder = [{value:'desc',label:'Descending'},{value:'asc',label:'Ascending'}]
-    return(<>
-    <h1>Our Latest Articles</h1>
+    const customStyles = {
+        control: (provided, state) => ({
+          ...provided,
+          backgroundColor: 'black',
+          color: 'white',
+          border: 'none',
+          boxShadow: state.isFocused ? '0 0 0 2px blue' : 'none', // Add box-shadow on focus
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          backgroundColor: 'black',
+          color: 'white',
+          '&:hover': {
+            backgroundColor: 'gray',
+          },
+        }),
+        singleValue: (provided) => ({
+          ...provided,
+          color: 'white', // Change color of selected value
+        }),
+        dropdownIndicator: (provided) => ({
+            ...provided,
+            display: 'none', // Hide the dropdown indicator
+          }),
+      };
+
+
+
+
+    return(
+ 
     
         
     
     <Grid className = 'article-container' container alignItems="stretch"  rowSpacing={2}>
-       <Grid  className='left-sidebar' xs={12} sm={12} md={12} lg={12} xl={12}>
-       <Topics styling = 'small'></Topics>
+    <Grid className='topic-grid-container' xs={12} sm={12} md={12} lg={12} xl={12}>
+       <Topics styling = 'small'></Topics> 
+       </Grid>
+    <h1>Our Latest Articles</h1>
+       <Grid container className='left-sidebar' xs={12} sm={12} md={12} lg={12} xl={12}>
+        
+       <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
        <form >
-     <Select className="custom-select" options = {options}onChange={handleChange}> styles={{}} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}</Select>
-    <Select className='custom-select' options = {optionsorder}onChange={handleChange}> components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}</Select>
+    
+     <Select placeholder="Sort Articles" options = {options}onChange={handleChange} styles={customStyles}> </Select>
+    <Select placeholder="Choose either Ascending or Descending order" options = {optionsorder}onChange={handleChange}styles={customStyles} > </Select>
     
     </form>
-    
+    </Grid>
     </Grid>
     <Grid container spacing = {2} className = 'article' xs={12} sm={12} md={5} lg={5} xl={8} sx={{minWidth: '100%'}}>
         {articles.map((art,index)=> {
@@ -77,7 +119,7 @@ function Articles() {
             )})}
               </Grid>
         </Grid>
-    </>)
+    )
 }
 
 export default Articles
