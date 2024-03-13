@@ -44,7 +44,7 @@ function ArticleCard() {
     <h3>{article.created_at?.slice(0,10)} Votes: {article.votes}<ArrowUpOutlined onClick={()=>{changeVotes(article,1)}}/><ArrowDownOutlined onClick={()=>{changeVotes(article,-1)}}/></h3>
     <p style={{ color: "red" }}>{error}</p>
     <p>{article.body}</p>
-    <img src = {article.article_img_url}/>
+    <img className='article-card-image' src = {article.article_img_url}/>
     <h2>Comments ({article.comment_count})</h2>
     <hr></hr>
     <CommentAdder setComments={setComments} article_id = {article_id}/>
