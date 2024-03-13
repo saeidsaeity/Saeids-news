@@ -15,14 +15,14 @@
 
 .flex-container {
   display: flex;
-  background-color:red;
+  background-color:rgb(0, 0, 0);
   width:100vw;
 
   
   /* justify-content: space-between; */
 }
 .active-icon{
-  border-color: blue;
+  border-color: rgb(255, 0, 0);
 }
 .active{
   position:relative;
@@ -34,7 +34,7 @@
   text-align: center;
 vertical-align: middle;
 line-height: 100px;  
-  color: darkblue;
+  color: rgb(0, 0, 247);
   will-change: filter;
   transition: filter 300ms;
   text-decoration: none;
@@ -87,7 +87,7 @@ line-height: 100px;
 }
 .article{
   margin:auto;
-  border: 1px solid black; 
+
 
 }
 /* .article-container{
@@ -98,6 +98,19 @@ line-height: 100px;
   
 
 } */
+.individual-article{
+  background-color: black;
+  color: white;
+  border-style: solid;
+  border-color:white;
+}
+.individual-article-latest{
+
+  background-color: black;
+  color: yellow;
+  border-style: solid;
+  border-color:yellow;
+}
 
 .author{
   position: relative;
@@ -109,8 +122,12 @@ line-height: 100px;
   padding: 10px
 }
 .article-image{
-  width:600px;
-  height:500px;
+  width:200px;
+  height:200px;
+}
+.article-image-first{
+  width:500px;
+  height: 300px;
 }
 .title{
   position: relative;
