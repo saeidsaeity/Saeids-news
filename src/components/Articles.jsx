@@ -30,23 +30,23 @@ function Articles() {
 
     }
     const options = [{value: "created_at", label: 'Date'},{value: 'title', label: 'title'},{value: 'author', label: 'author'},{value: 'votes', label: 'votes'}]
-    const optionsorder = [{value:'asc',label:'Ascending'},{value:'desc',label:'Descending'}]
+    const optionsorder = [{value:'desc',label:'Descending'},{value:'asc',label:'Ascending'}]
     return(<>
     <h1>Our Latest Articles</h1>
     
-   
+        
     
     <Grid className = 'article-container' container alignItems="stretch"  rowSpacing={2}>
-       <Grid  className='left-sidebar' xs={12} sm={12} md={12} lg={12} xl={1}>
+       <Grid  className='left-sidebar' xs={12} sm={12} md={12} lg={12} xl={12}>
        <Topics styling = 'small'></Topics>
        <form >
-     <Select className="custom-select" options = {options}onChange={handleChange}></Select>
-    <Select className='custom-select' options = {optionsorder}onChange={handleChange}></Select>
+     <Select className="custom-select" options = {options}onChange={handleChange}> styles={{}} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}</Select>
+    <Select className='custom-select' options = {optionsorder}onChange={handleChange}> components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}</Select>
     
     </form>
     
     </Grid>
-    <Grid container spacing = {2} className = 'article' xs={12} sm={12} md={5} lg={5} xl={8} sx={{minWidth: '1200px'}}>
+    <Grid container spacing = {2} className = 'article' xs={12} sm={12} md={5} lg={5} xl={8} sx={{minWidth: '100%'}}>
         {articles.map((art,index)=> {
             if(index === 0){
                 

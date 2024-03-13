@@ -21,6 +21,9 @@
   
   /* justify-content: space-between; */
 }
+.custom-select{
+  
+}
 .active-icon{
   border-color: rgb(255, 0, 0);
 }
@@ -86,7 +89,7 @@ line-height: 100px;
   }
 }
 .article{
-  margin:auto;
+ 
 
 
 }
@@ -122,12 +125,12 @@ line-height: 100px;
   padding: 10px
 }
 .article-image{
-  width:200px;
-  height:200px;
+  max-width: 100%;
+  height:50%;
 }
 .article-image-first{
-  width:500px;
-  height: 300px;
+  width:100%;
+  height: 50%;
 }
 .title{
   position: relative;
@@ -148,6 +151,7 @@ line-height: 100px;
 }
 .topic-small{
   float:inline-start;
+  width:5em;
 }
 .topic-small h1{
   
@@ -184,8 +188,48 @@ line-height: 100px;
   
     text-align: center;
   }
+  .flex-container {
+    display: flex;
+    background-color:rgb(0, 0, 0);
+    /* justify-content: space-between; */
+  }
+  #root {
+  
+    margin: 0 auto ;
+    padding: 0;
+    text-align: center;
+  }
+  .active{
+    position:relative;
+    padding: 0;
+  
+  
+    font-size: 1em;
+    text-align: center;
+  vertical-align: middle;
+  line-height: 1em;  
+    color: rgb(0, 0, 247);
+    will-change: filter;
+    transition: filter 300ms;
+    text-decoration: none;
+  }
+  .NavLink{
+    position:relative;
+    padding: 0 ;
+ 
+    
+    font-size: 1em;
+    text-align: center;
+  vertical-align: middle;
+  line-height: 1em;  
+    color: white;
+    will-change: filter;
+    transition: filter 300ms;
+    text-decoration: none;
+  
+  }
   .topic-small{
-    width: 300vw;
+   
     float: none;
    
     margin:auto;
@@ -198,30 +242,24 @@ line-height: 100px;
  
   .topic-small h1{
     
-    font-size: 50px;
+    font-size: 1em;
     display: inline-block;
-    padding: 10px;
+    padding: 0.1em;
   }
   .topic-small .disappear
   { display: none;
   }
   
  .topic-small .topic-header{
-  width: 200px;
+
+  width: auto;
   border-radius: 20px;
   border-right: solid;
   border-color: whitesmoke;
     background-color: rgb(14, 2, 2);
     display: inline-block;
   }
-  .flex-container {
-    display: flex;
-    background-color:rgb(0, 0, 0);
-    width:325vw;
   
-    
-    /* justify-content: space-between; */
-  }
   .active-topic{
     
     color: rgb(0, 0, 247);
