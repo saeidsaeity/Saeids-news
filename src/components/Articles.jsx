@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Form, Link, useSearchParams } from "react-router-dom";
 import Select from 'react-select';
 import Topics from "./Topics";
-
+import { Bars } from 'react-loading-icons'
 function Articles() {
     const [articles,setArticles]=useState([])
     const [searchParams,setSearchParams]=useSearchParams()
@@ -12,12 +12,13 @@ function Articles() {
     const sort_by=searchParams.get('sort_by')
     const order = searchParams.get('order')
     const[error,setError]=useState()
+    const [loading,setLoading]= useState(0)
     useEffect(()=>{
         getArticles(topic,sort_by,order).then((articles)=>{
-
+            setLoading(1)
             setArticles(articles)
-           
-        }).catch((error)=>{setError(error.response.data)})
+            setError()
+        }).catch((currerror)=>{setError(currerror)})
 
     },[topic,sort_by,order])
     function handleChange(event) {
@@ -33,7 +34,8 @@ function Articles() {
 
     }
     if(error){
-        return(<h2>Error {error.status}: {error.msg}</h2>)
+        console.log(error);
+        return(<h2>Error {error.response.data.status}: {error.response.data.msg}</h2>)
         
     }
     const options = [{value: "created_at", label: 'Date'},{value: 'title', label: 'Title'},{value: 'author', label: 'Author'},{value: 'votes', label: 'Votes'}]
@@ -63,8 +65,14 @@ function Articles() {
             display: 'none', // Hide the dropdown indicator
           }),
       };
-
-
+      
+      if(loading===0){
+        return(
+        <>
+        <Bars/>
+        <h2>Loading...</h2>
+        </>)
+      }
 
 
     return(

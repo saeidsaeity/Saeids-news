@@ -4,7 +4,7 @@ import { getArticleById, incrementArticleVoteCount } from "./utils/api";
 import Comments from "./Comments";
 import {ArrowUpOutlined,ArrowDownOutlined } from '@ant-design/icons'
 import CommentAdder from "./CommentAdder";
-
+import { Bars } from 'react-loading-icons'
 function ArticleCard() {
     const {article_id}= useParams()
     const [article,setArticle]=useState([])
@@ -12,9 +12,11 @@ function ArticleCard() {
     const [clicked,setClicked]=useState(0)
     const [error,setError]=useState()
     const [articleError,setArticleError]= useState()
+    const[loading,setLoading]=useState(0)
     useEffect(()=>{
         getArticleById(article_id).then((article)=>{
             setArticle(article)
+            setLoading(1)
         }
         ).catch((error)=>{setArticleError(error.response)})
     },[])
@@ -23,7 +25,7 @@ function ArticleCard() {
         if(clicked===0){
             setArticle((currArticle)=>{
                 setClicked(1)
-                return{...currArticle,votes:article.votes + 1}
+                return{...currArticle,votes:article.votes + vote}
             })    
         incrementArticleVoteCount(article_id,vote)
         }
@@ -36,6 +38,12 @@ function ArticleCard() {
         <h1>Error {articleError.status} : {articleError.data.msg}</h1>
         
         )
+    }
+    if(loading === 0){
+        return(<>
+        <Bars/> 
+        <h2>Loading ...</h2>
+        </>)
     }
 
    return(<>
