@@ -1,7 +1,7 @@
 ### Frontend Project README
 
 Welcome to my frontend project! This project is a website designed to organise articles by topic and allow users to sort them by various criteria such as votes, author, and date. Additionally, users can upvote and downvote both articles and comments, and view individual articles in detail.
-
+[Link to hosted website](https://unrivaled-raindrop-ae6cc9.netlify.app) 
 ## Requirements
 
 - Node.js version: v21.5.0
